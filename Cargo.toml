@@ -1,0 +1,33 @@
+[package]
+name = "rs-yymm2asn1"
+version = "0.1.0"
+edition = "2024"
+
+[lints.rust]
+unsafe_code = "forbid"
+
+[lints.clippy]
+unwrap_used = "forbid"
+
+[dependencies.der]
+version = "0.7.10"
+default-features = false
+features = [
+	"std",
+	"derive",
+]
+
+[dependencies.serde_json]
+version = "1.0"
+default-features = false
+features = [
+	"std",
+]
+
+[dependencies.serde]
+version = "1.0"
+default-features = false
+features = [
+	"std",
+	"derive",
+]
