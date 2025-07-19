@@ -1,0 +1,66 @@
+YYMM-Schema DEFINITIONS IMPLICIT TAGS ::= BEGIN
+
+--
+-- A standard representation for a year and month.
+--
+DateYyMm ::= SEQUENCE {
+  year  INTEGER (0..99),
+  month INTEGER (1..12)
+}
+
+--
+-- A compact representation where the month is encoded in the tag.
+-- This is useful for applications like credit card expiration dates
+-- where the century can be reliably inferred. For example, a "year"
+-- value of 25 with a "jan" tag would be inferred as January 2025.
+--
+DateYyMmCompactInfer ::= CHOICE {
+  jan [1] INTEGER (0..99),
+  feb [2] INTEGER (0..99),
+  mar [3] INTEGER (0..99),
+  apr [4] INTEGER (0..99),
+  may [5] INTEGER (0..99),
+  jun [6] INTEGER (0..99),
+  jul [7] INTEGER (0..99),
+  aug [8] INTEGER (0..99),
+  sep [9] INTEGER (0..99),
+  oct [10] INTEGER (0..99),
+  nov [11] INTEGER (0..99),
+  dec [12] INTEGER (0..99)
+}
+
+--
+-- A compact representation for dates within a specific range (2000-2199).
+-- This explicitly handles the century by dividing the tags into blocks.
+--
+DateYyMmCompactRecent ::= CHOICE {
+  -- Dates in the 2000s
+  jan2000 [1] INTEGER (0..99),
+  feb2000 [2] INTEGER (0..99),
+  mar2000 [3] INTEGER (0..99),
+  apr2000 [4] INTEGER (0..99),
+  may2000 [5] INTEGER (0..99),
+  jun2000 [6] INTEGER (0..99),
+  jul2000 [7] INTEGER (0..99),
+  aug2000 [8] INTEGER (0..99),
+  sep2000 [9] INTEGER (0..99),
+  oct2000 [10] INTEGER (0..99),
+  nov2000 [11] INTEGER (0..99),
+  dec2000 [12] INTEGER (0..99),
+
+  -- Dates in the 2100s
+  jan2100 [13] INTEGER (0..99),
+  feb2100 [14] INTEGER (0..99),
+  mar2100 [15] INTEGER (0..99),
+  apr2100 [16] INTEGER (0..99),
+  may2100 [17] INTEGER (0..99),
+  jun2100 [18] INTEGER (0..99),
+  jul2100 [19] INTEGER (0..99),
+  aug2100 [20] INTEGER (0..99),
+  sep2100 [21] INTEGER (0..99),
+  oct2100 [22] INTEGER (0..99),
+  nov2100 [23] INTEGER (0..99),
+  dec2100 [24] INTEGER (0..99)
+}
+
+END
